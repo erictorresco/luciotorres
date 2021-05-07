@@ -10,31 +10,38 @@
  Tags: 
  Text Domain: 
  */
-
  @tailwind base;
+ @tailwind components; 
+ @tailwind utilities;
 
- @tailwind components;
- 
- .content p, h2 {
-    @apply mx-2;
+ @layer components {
+  .content  p {
+    @apply text-lg mx-2;
   }
-  
-  .content figure {
-    @apply   bg-gray-100;
+
+  .content h2 {
+    @apply mx-3;
   }
-  
-  .content figure > figcaption {
-    @apply mx-4 text-xs text-gray-700;
+
+  .content blockquote {
+    @apply mx-4;
   }
-  
-  .wp-block-image {
-    @apply flex flex-col justify-center items-center py-5;
-    
+
+
+  .content figure  {
+    @apply  w-full flex flex-col justify-center items-center !important;
+  }
+
+  .content figure > figcaption  {
+    @apply  text-center mx-4;
+  }
+
+  .content iframe  {
+    @apply  h-full !important;
   }
 
   .nav-link {
     @apply font-semibold text-lg text-gray-300 hover:text-white;
   }
 
-
- @tailwind utilities;
+}

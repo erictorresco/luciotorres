@@ -2,77 +2,63 @@
 
 {% block content %}
 	<section class="bg-gradient-to-b from-gray-800 via-gray-900  to-gray-800 pt-8">
-            <div class="flex flex-col lg:flex-row justify-between items-center container pt-5 mx-auto">
-                <div class="text-white w-9/12">
-                    <p class="text-lg lg:text-2xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent in risus vel ligula condimentum laoreet eu ac ligula.</p>
-                    <p class="text-xl lg:text-3xl text-blue-300 my-3 lg:mt-0"> Sed nec leo feugiat, tempus eros sed, molestie velit.</p>
-                    <div>
-                        <form class="flex flex-col lg:mt-5 lg:flex-row mx-auto">
-                            <input class="h-10 rounded lg:rounded-none mb-4 lg:rounded-l-lg px-4 lg:border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white" placeholder="tu@correo.com" />
-                            <button class="h-10 mx-20 rounded lg:rounded-none lg:mx-0 lg:px-8 lg:rounded-r-lg bg-blue-300  text-gray-800 font-bold uppercase border-blue-300 border-t border-b border-r">Suscribete</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="mt-10 lg:mt-0 w-44 lg:w-1/5 lg:ml-5 order-last lg:order-first">
-                    <img class="h-auto w-full" src="{{theme.link}}/static/images/lucio.png" alt="Lucio" />
-                </div>
-            </div>
-    </section>
-	 <section>
-            <div class="container mx-auto">
-                <div class="mx-1 lg:mx-0 bg-gradient-to-r from-gray-800 via-gray-600 to-gray-800 mt-5 shadow rounded">
-                    <h3 class="text-2xl text-center text-white  py-2 pl-4">Últimos artículos</h3>
-                </div>
+		<div class="flex flex-col lg:flex-row justify-between items-center container pt-5 mx-auto">
+			<div class="text-white w-9/12">
+				<p class="text-lg lg:text-2xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent in risus vel ligula condimentum laoreet eu ac ligula.</p>
+				<p class="text-xl lg:text-3xl text-blue-300 my-3 lg:mt-0">
+					Sed nec leo feugiat, tempus eros sed, molestie velit.</p>
+				<div>
+					<form class="flex flex-col lg:mt-5 lg:flex-row mx-auto">
+						<input class="h-10 rounded lg:rounded-none mb-4 lg:rounded-l-lg px-4 lg:border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white" placeholder="tu@correo.com"/>
+						<button class="h-10 mx-20 rounded lg:rounded-none lg:mx-0 lg:px-8 lg:rounded-r-lg bg-blue-300  text-gray-800 font-bold uppercase border-blue-300 border-t border-b border-r">Suscribete</button>
+					</form>
+				</div>
+			</div>
+			<div class="mt-10 lg:mt-0 w-44 lg:w-1/5 lg:ml-5 order-last lg:order-first">
+				<img class="h-auto w-full" src="{{theme.link}}/static/images/lucio.png" alt="Lucio"/>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="container mx-auto">
+			<div class=" lg:mx-0 bg-gradient-to-r from-gray-800 via-gray-600 to-gray-800 my-2 shadow ">
+				<h3 class="text-2xl text-center text-white  py-2 pl-4">Últimos artículos</h3>
+			</div>
 
-                <div class="flex flex-col mx-2 lg:mx-0  lg:flex-row lg:space-x-10">
-                    {% for article in posts %}
-                                <div class="rounded overflow-hidden mt-5  border shadow-lg lg:w-1/3">
-                                    <div class="relative h-52  flex flex-col justify-between">
-										{% if article.thumbnail.src %}
-
-											<img
-                                            class="absolute w-full h-full object-cover object-top z-0"
-                                            src={{article.thumbnail.src}}
-                                            alt="Picture of the author"
-                                            layout="fill"
-                                            priority />
-
-                                        />
-										{% endif %}
-                                        
-
-                                        <h3 class="absolute text-xs top-2 right-1 text-white px-3 rounded bg-gray-600 opacity-75">Análisis</h3>
-                                        <div class="ml-5 mt-2 z-10 flex">
-            
-                                        </div>
-                                        <div class="bg-black bg-opacity-25 z-10 py-2">
-                                            <div class="z-10 text-shadow mb-2 ml-5 leading-5">
-                                                 <a class=" text-2xl text-white  ">{{article.title}}</a>                         
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex flex-col  bg-gray-50 px-2 lg:h-52">
-
-                                        <div class="flex flex-col py-1 prose-sm flex-grow">
-											{{article.preview.read_more('')}}
+			<div class="flex flex-col space-y-1 lg:mx-0  lg:flex-row lg:space-x-10">
+				{% for article in posts %}
+					<div class="overflow-hidden shadow-lg lg:w-1/3">
+						<div class="relative h-96  flex flex-col justify-between">
+							{% if article.thumbnail.src %}
+								<img class="absolute w-full h-full object-cover object-top z-0" src={{article.thumbnail.src}} alt="Picture of the author" layout="fill" priority/>
+							{% endif %}
+							<h3 class="absolute text-xs top-2 right-1 text-white px-3 py-1 rounded-xl bg-gray-800 opacity-75">{{article.category}}</h3>
+							<div class="ml-5 mt-2 z-10 flex"></div>
+							<div class="bg-black bg-opacity-50 z-10 py-2 px-2">
+								<div class="">
+									<a href="{{article.link}}" class="text-2xl text-white font-mono" style="text-shadow: 2px 2px black">{{article.title}}</a>
+									<div class="flex flex-col mx-2 mt-2 text-white items-end">
+										<div class="flex items-center space-x-1">
+											<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+												<path strokelinecap="round" strokelinejoin="round" strokewidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+											</svg>
+											<h4 class="text-xs">{{article.date}}</h4>
 										</div>
-                                        <div class="flex flex-col my-3 mx-2">
-                                            <div class="flex items-center space-x-1">
-                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                                                <h4 class="text-sm">{{article.date}}</h4>
-                                            </div>
 
-                                            <div class="flex items-center space-x-1">
-                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                                                <span class="text-sm">1535 vistas</span>
-                                            </div>
+										{# <div class="flex items-center space-x-1">
+																																																																																																																																													<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+																																																																																																																																														<path strokelinecap="round" strokelinejoin="round" strokewidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+																																																																																																																																													</svg>
+																																																																																																																																													<span class="text-xs">1535 vistas</span>
+																																																																																																																																												</div> #}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
 
-                                        </div>
-                                    </div>
-
-                                </div>
-								{% endfor %}
-                </div>
-            </div>
-        </section>
-{% endblock %}
+		</div>
+	</div>
+</section>{% endblock %}
